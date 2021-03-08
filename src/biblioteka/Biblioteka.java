@@ -10,26 +10,38 @@ public class Biblioteka implements BibliotekaInterface {
 	
 	@Override
 	public void dodajKnjigu(Knjiga knjiga) {
-		// TODO Auto-generated method stub
-
+		if(knjiga == null) {
+			throw new RuntimeException("knjiga ne sme da bude null");
+		}
+		if(knjige.contains(knjiga) ) {
+			throw new RuntimeException("knjiga vec postoji u biblioteci");
+		}
+		knjige.add(knjiga);
 	}
 
 	@Override
 	public void obrisiKnjigu(Knjiga knjiga) {
-		// TODO Auto-generated method stub
+		knjige.remove(knjiga);
 
 	}
 
 	@Override
 	public LinkedList<Knjiga> vratiSveKnjige() {
-		// TODO Auto-generated method stub
-		return null;
+		return knjige;
 	}
 
 	@Override
 	public LinkedList<Knjiga> pronadjiKnjigu(Autor autor, String isbn, String naslov, String izdavac) {
-		// TODO Auto-generated method stub
-		return null;
+		if(autor == null && isbn == null && naslov == null && izdavac == null) {
+			return knjige;
+		}
+		LinkedList<Knjiga> rezultat = new LinkedList<>();
+		for(Knjiga knjiga : knjige) {
+			if(knjiga.getNaslov().contains(naslov)) {
+				rezultat.add(knjiga);
+			}
+		}
+		return rezultat;
 	}
 
 }
