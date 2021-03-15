@@ -33,10 +33,10 @@ public class Autor {
 	}
 
 	public void setPrezime(String prezime) {
-		if (ime == null) {
+		if (prezime == null) {
 			throw new NullPointerException("Prezime autora ne sme biti null.");
 		}
-		if (ime.length() < 2) {
+		if (prezime.length() < 2) {
 			throw new RuntimeException("Prezime mora da ima bar 2 znaka.");
 		}
 		this.prezime = prezime;
